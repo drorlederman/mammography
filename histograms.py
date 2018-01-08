@@ -151,8 +151,9 @@ colors = ['gold', 'yellowgreen', 'lightcoral', 'lightskyblue','crimson','mediums
 
 #fig = plt.figure(1)
 fig, ax1 = plt.subplots()
+#fig, ax1 = plt.subplots(nrows=1, ncols=2)
 #plt.clf()
-fig.clf()
+#fig.clf()
 plt.rcParams['font.size'] = 20.0
 fig.set_size_inches(16,12)
 patches, texts, autotexts = ax1.pie(resultsINBREAST_Birad[1:], colors=colors, labels=labelsINBREAST_Birad, autopct='', startangle=90)
@@ -162,22 +163,35 @@ fig.show()
 plt.show()
 plt.savefig('INBreast database BIRAD classification');
 
-fig, ax1 = plt.subplots(211)
-fig.set_size_inches(16,12)
-patches, texts, autotexts = ax1.pie(resultsMIAS[1:], colors=colors, labels=labelsMIAS, autopct='', startangle=90) #, labeldistance=-0.5) #, pctdistance=1.1,
-ax1.axis('equal')
-ax1.text(-0.067, -1.30, '(a)', {'color': 'k', 'fontsize': 20})
-fig.show()
-plt.savefig('Mini-MIAS database densities');
+fig, ax1 = plt.subplots(nrows=1, ncols=2, figsize=(16,6))
+plt.rcParams['font.size'] = 18.0
+#fig, ax1 = plt.subplots(figsize=(4,4))
+#plt.figure(figsize=(20,10))
+#fig, ax1 = plt.subplots()
+#fig.set_size_inches(10,8)
+#plt.figure(figsize=(20,10)) – StackG Apr 25 '15 at 10:16
 
-fig, ax1 = plt.subplots(212)
-fig.set_size_inches(16,12)
-ax1.axis('equal')
-ax1.text(-0.067, -1.30, '(b)', {'color': 'k', 'fontsize': 20})
+#fig, ax = plt.subplots(figsize=(20, 10))
+#fig.set_size_inches(16,12)
+plt.subplots_adjust(left=None, bottom=None, right=None, top=None, wspace=0.1, hspace=None)
+patches, texts, autotexts = ax1[0].pie(resultsMIAS[1:], colors=colors, labels=labelsMIAS, autopct='', startangle=90) #, labeldistance=-0.5) #, pctdistance=1.1,
+ax1[0].axis('equal')
+ax1[0].text(-0.067, -1.30, '(a)', {'color': 'k', 'fontsize': 16})
+#fig.show()
+#plt.savefig('Mini-MIAS database densities');
+
+#fig, ax1 = plt.subplots()
+#fig.set_size_inches(16,12)
+ax1[1].axis('equal')
+ax1[1].text(-0.067, -1.30, '(b)', {'color': 'k', 'fontsize': 16})
 #patches, texts, autotexts = ax2.pie(resultsINBREAST[1:], colors=colors, labels=labelsINBREAST, autopct=make_autopct(labelsINBREAST), startangle=90)
-patches, texts, autotexts = ax1.pie(resultsINBREAST[1:], colors=colors, labels=labelsINBREAST, autopct='', startangle=0)
+patches, texts, autotexts = ax1[1].pie(resultsINBREAST[1:], colors=colors, labels=labelsINBREAST, autopct='', startangle=0)
+#fig.set_size_inches(4, 2, forward=True)
+#fig = plt.gcf()
+#fig.set_size_inches(2,2) # or (4,4) or (5,5) or whatever
 fig.show()
-plt.savefig('INBreast database BIRAD densities');
+#plt.savefig('INBreast database BIRAD densities');
+plt.savefig('Mini-MIAS and INBreast database BIRAD densities');
 
 a=1
 #
